@@ -4,23 +4,43 @@
 
 // ===== TEAM MEMBERS DATA =====
 const teamData = {
+    gladiators: {
+        name: 'Gladiators',
+        motto: '"Bold Arena Triumph"',
+        logo: 'images/GladiatorsPlain.png',
+        color: '#FFFF00',
+        members: [
+            'Afzal Alam',
+            'Anitha Subramani',
+            'Bharath Kumar',
+            'Deepak Selvam',
+            'Kanchi Kumar (C)',
+            'Mohammed Asik A',
+            'Sriman Mayandi',
+            'Swetha Manthiramoorthy',
+            'Venkatesan Rajasekaran (VC)',
+            'Vidhya Elango',
+            'Vinoth Shanmugam',
+            'Vivek Senthilkumar'
+        ]
+    },
     spartans: {
         name: 'Spartans',
         motto: '"Born to Win"',
-        logo: 'images/Spartans 1.jpg',
-        color: '#FF8C5A',
+        logo: 'images/Spartans 1.png',
+        color: '#FF0000',
         members: [
             'Barath Erulappan',
             'Divya Jeyashree',
             'Esakkiappan Nambi',
-            'Hariharan Ilango',
+            'Hariharan Ilango (C)',
             'K Mohammed Azaarudeen',
             'Krishna Rajkumar P',
             'Mukundan Duraikannan',
             'Priyanga R',
             'Rajesh Chidambara',
             'Saravanakumar Vetrivel',
-            'Vigneshwaran Ilangovan',
+            'Vigneshwaran Ilangovan (VC)',
             'Vijayashree JJ'
         ]
     },
@@ -28,11 +48,11 @@ const teamData = {
         name: 'Samurais',
         motto: '"Refuse to Lose"',
         logo: 'images/SamuraisPlain.png',
-        color: '#FF6B7A',
+        color: '#008000',
         members: [
-            'Abubulker Siddiq R',
-            'Anandu Sanu',
-            'Athul Anand',
+            'Abubukker Siddiq R',
+            'Anandu Sanu (C)',
+            'Athul Anand (VC)',
             'Kannadhasan Kasi',
             'Karnassagar S',
             'Omkar Kamat',
@@ -47,40 +67,20 @@ const teamData = {
         name: 'Knights',
         motto: '"Together We Rise"',
         logo: 'images/KnightsPlain.png',
-        color: '#6B8FFF',
+        color: '#0000FF',
         members: [
             'Jai Kumar RR',
             'Mathanprasath K',
             'Naveen Karthick R',
-            'Pradeep Kumar E',
+            'Pradeep Kumar E (VC)',
             'Praveen Alagesan',
             'Ragulvasanth Muthukumar',
-            'Shambu Kameshwar B',
+            'Shambu Kameshwar B (C)',
             'Shamili Sivassankaran',
             'Sridhar Srinivasan',
             'Srisha S',
             'Vidhya Selvaraj',
             'Salman Farzee'
-        ]
-    },
-    gladiators: {
-        name: 'Gladiators',
-        motto: '"Bold Arena Triumph"',
-        logo: 'images/GladiatorsPlain.png',
-        color: '#C47FDD',
-        members: [
-            'Afzal Alam',
-            'Anitha Subramani',
-            'Bharath Kumar',
-            'Deepak Selvam',
-            'Kanchi Kumar',
-            'Mohammed Asik A',
-            'Sriman Mayandi',
-            'Swetha Manthiramoorthy',
-            'Venkatesan Rajasekaran',
-            'Vidhya Elango',
-            'Vinoth Shanmugam',
-            'Vivek Senthilkumar'
         ]
     }
 };
@@ -422,10 +422,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     startAuto();
 })();
 
-// ===== VIDEO AUTOPLAY ON SCROLL =====
+// ===== VIDEO CUSTOM CONTROLS =====
 (function () {
     const video = document.getElementById('anthemVideo');
-    if (!video) return;
+    const muteBtn = document.getElementById('videoMuteBtn');
+    const volumeIcon = document.getElementById('volumeIcon');
+    if (!video || !muteBtn) return;
+
+    muteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.muted) {
+            video.muted = false;
+            volumeIcon.textContent = '🔊';
+            muteBtn.title = 'Mute';
+        } else {
+            video.muted = true;
+            volumeIcon.textContent = '🔇';
+            muteBtn.title = 'Unmute';
+        }
+    });
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -438,10 +453,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }, { threshold: 0.3 });
 
     observer.observe(video);
-
-    // Unmute on first user interaction so sound plays
-    document.addEventListener('click', function unmute() {
-        video.muted = false;
-        document.removeEventListener('click', unmute);
-    }, { once: true });
 })();
