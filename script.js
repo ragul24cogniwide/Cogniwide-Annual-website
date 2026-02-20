@@ -7,7 +7,7 @@ const teamData = {
     gladiators: {
         name: 'Gladiators',
         motto: '"Bold Arena Triumph"',
-        logo: 'images/GladiatorsPlain.png',
+        logo: '/images/GladiatorsPlain.png',
         color: '#FFFF00',
         members: [
             'Afzal Alam',
@@ -27,7 +27,7 @@ const teamData = {
     spartans: {
         name: 'Spartans',
         motto: '"Born to Win"',
-        logo: 'images/Spartans 1.png',
+        logo: '/images/Spartans 1.png',
         color: '#FF0000',
         members: [
             'Barath Erulappan',
@@ -47,7 +47,7 @@ const teamData = {
     samurais: {
         name: 'Samurais',
         motto: '"Refuse to Lose"',
-        logo: 'images/SamuraisPlain.png',
+        logo: '/images/SamuraisPlain.png',
         color: '#008000',
         members: [
             'Abubukker Siddiq R',
@@ -66,7 +66,7 @@ const teamData = {
     knights: {
         name: 'Knights',
         motto: '"Together We Rise"',
-        logo: 'images/KnightsPlain.png',
+        logo: '/images/KnightsPlain.png',
         color: '#0000FF',
         members: [
             'Jai Kumar RR',
@@ -454,3 +454,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     observer.observe(video);
 })();
+
